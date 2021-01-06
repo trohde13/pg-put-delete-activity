@@ -8,7 +8,10 @@ function addClickHandlers() {
   $('#submitBtn').on('click', handleSubmit);
 
   // TODO - Add code for edit & delete buttons
-}
+  $('#bookShelf').on('click', '.readBtn', markRead);
+  $('#bookShelf').on('click', '.deleteBtn', deleteBook);
+
+}; //end addClickHandlers
 
 function handleSubmit() {
   console.log('Submit button clicked.');
@@ -16,7 +19,17 @@ function handleSubmit() {
   book.author = $('#author').val();
   book.title = $('#title').val();
   addBook(book);
-}
+}; //end handleSubmit
+
+function markRead() {
+  console.log('clicked READ');
+
+}; //end markRead
+
+function deleteBook() {
+  console.log('clicked DELETE');
+
+}; //end deleteBook
 
 // adds a book to the database
 function addBook(bookToAdd) {
@@ -31,7 +44,7 @@ function addBook(bookToAdd) {
       console.log('Error in POST', error)
       alert('Unable to add book at this time. Please try again later.');
     });
-}
+}; //end addBook
 
 // refreshBooks will get all books from the server and render to page
 function refreshBooks() {
@@ -44,7 +57,7 @@ function refreshBooks() {
   }).catch(function(error){
     console.log('error in GET', error);
   });
-}
+}; //end refreshBooks
 
 
 // Displays an array of books to the DOM
@@ -58,6 +71,8 @@ function renderBooks(books) {
     $tr.data('book', book);
     $tr.append(`<td>${book.title}</td>`);
     $tr.append(`<td>${book.author}</td>`);
+    $tr.append(`<td><button class="readBtn">READ</td>`);
+    $tr.append(`<td><button class="deleteBtn">DELETE</td>`);
     $('#bookShelf').append($tr);
   }
-}
+}; //end renderBooks
