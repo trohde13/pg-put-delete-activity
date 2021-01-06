@@ -27,11 +27,13 @@ Add another button to each book allowing the user to `Mark as Read`. Again, star
 ### Task list
 
 - [x] You'll need to create a database called `awesome_reads`. 
-- [ ] Use the provided `database.sql` file to create the `books` table and setup some test data.
+- [x] Use the provided `database.sql` file to create the `books` table and setup some test data.
 - [ ] DELETE button for each book (starter code in book.router.js, update this to use book id to remove it from database)
 - [ ] Update book list display to show if a book has been read or not
         -there's already a status column, append it to DOM(?)
 - [ ] MARK AS READ button for each book (starter code in book.router.js, when a book has been read, status should change to `Read`)
+
+-Original Task List-
 
 - [ ] DELETE & PUT AJAX calls
 - [ ] DELETE & PUT SERVER SIDE 
