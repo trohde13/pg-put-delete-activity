@@ -23,11 +23,39 @@ function handleSubmit() {
 
 function markRead() {
   console.log('clicked READ');
+  //id for url and WHERE clause
+  const id = $(this).closest('tr').data('id');
+  //data for SET clause in UPDATE
+  const dataToSend = {
+    direction: $(this).text()
+  }
+
+  $.ajax({
+    url: `/awesome_reads/${id}`,
+    type: 'PUT',
+    data: dataToSend
+  }).then(function(response){
+    console.log('marked as READ');
+    refreshBooks();
+  }).catch(function(error){
+    alert('error marking book as read');
+  })
 
 }; //end markRead
 
 function deleteBook() {
   console.log('clicked DELETE');
+  const id = $(this).closest('tr').data('id');
+  console.log(id);
+
+  $.ajax({
+    url: `/awesome_reads/${id}`,
+    type: 'DELETE'
+  }).then(function(response) {
+    refreshBooks();
+  }).catch(function(error) {
+    alert('error in delete');
+  })
 
 }; //end deleteBook
 
