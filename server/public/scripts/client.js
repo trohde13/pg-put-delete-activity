@@ -24,14 +24,15 @@ function handleSubmit() {
 function markRead() {
   console.log('clicked READ');
   //id for url and WHERE clause
-  const id = $(this).closest('tr').data('id');
+  const id = $(this).closest('tr').data('book').id;
+  console.log(id);
   //data for SET clause in UPDATE
   const dataToSend = {
     direction: $(this).text()
   }
 
   $.ajax({
-    url: `/awesome_reads/${id}`,
+    url: `/books/${id}`,
     type: 'PUT',
     data: dataToSend
   }).then(function(response){
@@ -45,11 +46,11 @@ function markRead() {
 
 function deleteBook() {
   console.log('clicked DELETE');
-  const id = $(this).closest('tr').data('id');
+  const id = $(this).closest('tr').data('book').id;
   console.log(id);
 
   $.ajax({
-    url: `/awesome_reads/${id}`,
+    url: `/books/${id}`,
     type: 'DELETE'
   }).then(function(response) {
     refreshBooks();
